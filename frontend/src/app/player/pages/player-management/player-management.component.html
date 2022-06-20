@@ -12,14 +12,12 @@
                     <div class="card-text">
                         <table class="table table-striped">
                             <tr class="bg-primary text-white">
-                                <th>ID du joueur</th>
                                 <th>Nom du joueur</th>
                             </tr>
                             <tr *ngIf="(players$ | async)?.length == 0">
-                                <td [attr.colspan]="2">Aucun joueur trouvé dans la base données !</td>
+                                <td>Aucun joueur trouvé dans la base données !</td>
                             </tr>
                             <tr *ngFor="let p of players$ | async; index as i" [class.bg-info]="i % 2 == 0">
-                                <td>{{ p.id }}</td>
                                 <td>{{ p.name }}</td>
                             </tr>
                         </table>
