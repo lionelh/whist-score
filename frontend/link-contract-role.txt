@@ -1,0 +1,64 @@
+Emballage
+=========
+Annonceur 1 / Annonceur 2
+Adversaire 1 / Adversaire 2
+
+Seul
+====
+Annonceur
+Adversaire 1 / Adversaire 2 / Adversaire 3
+
+Trou
+====
+Annonceur 1 / Annonceur 2
+Adversaire 1 / Adversaire 2
+
+Petite misère seul
+==================
+Annonceur
+Adversaire 1 / Adversaire 2 / Adversaire 3
+
+Petite misère à 2
+=================
+Annonceur 1 / Annonceur 2
+Adversaire 1 / Adversaire 2
+
+8 plis sur petite misère
+========================
+Annonceur
+Adversaire 1 / Adversaire 2 / Adversaire 3
+
+Abondance
+=========
+Annonceur
+Adversaire 1 / Adversaire 2 / Adversaire 3
+
+Grande misère seul
+==================
+Annonceur
+Adversaire 1 / Adversaire 2 / Adversaire 3
+
+Grande misère à 2
+=================
+Annonceur 1 / Annonceur 2
+Adversaire 1 / Adversaire 2
+
+Grande misère sur trou ou sur table seul
+========================================
+Annonceur
+Adversaire 1 / Adversaire 2 / Adversaire 3
+
+Grande misère sur trou ou sru table à 2
+=======================================
+Annonceur 1 / Annonceur 2
+Adversaire 1 / Adversaire 2
+
+Grande misère sur trou et sur table
+===================================
+Annonceur
+Adversaire 1 / Adversaire 2 / Adversaire 3
+
+Solo chelem
+===========
+Annonceur
+Adversaire 1 / Adversaire 2 / Adversaire 3

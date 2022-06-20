@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+.form-group.required .control-label:after {
+    content: "*";
+    color: red;
+}
+
+table.table tr td,
+table.table tr th,
+table.table  {
+  border: 2px solid black;
+  border: 2px solid black;
+  white-space: nowrap;
+}
+
+.bordered-fields {
+  border: 2px solid black;
+  margin-top: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
+
+.title-fields {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.role-annonceur {
+  font-weight: bold;
+}
