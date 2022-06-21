@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContractManagementComponent } from './pages/contract-management/contract-management.component';
+import { DatabaseCountersComponent } from './pages/database-counters/database-counters.component';
 
 const routes: Routes = [
-  { path: '', component: ContractManagementComponent }
+  { path: '', component: DatabaseCountersComponent }
 ];
 
 @NgModule({
