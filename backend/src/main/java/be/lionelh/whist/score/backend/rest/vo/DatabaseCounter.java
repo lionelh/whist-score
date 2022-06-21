@@ -13,6 +13,8 @@ public class DatabaseCounter {
     private long roles;
     private long eventPlayers;
 
+    private long totalRecords;
+
     public DatabaseCounter() { }
 
     public long getContracts() {
@@ -93,5 +95,13 @@ public class DatabaseCounter {
 
     public void setEventPlayers(long eventPlayers) {
         this.eventPlayers = eventPlayers;
+    }
+
+    public long getTotalRecords() {
+        return totalRecords;
+    }
+
+    public void setTotalRecords(long totalRecords) {
+        this.totalRecords = totalRecords;
     }
 }

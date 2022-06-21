@@ -325,6 +325,11 @@ public class DataService {
         }
         dc.setContractRoles(contractRoles);
 
+        long totalRecords = dc.getContracts() + dc.getPlayers() + dc.getDraws() + dc.getRoles() + dc.getEvents();
+        totalRecords += dc.getPlayerDraws() + dc.getResultRoles() + dc.getResults() + dc.getEventPlayers() + dc.getContractRoles();
+
+        dc.setTotalRecords(totalRecords);
+
         return dc;
     }
 }

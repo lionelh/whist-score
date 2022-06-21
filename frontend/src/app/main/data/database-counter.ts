@@ -11,4 +11,5 @@ export interface DatabaseCounter {
   resultRoles: number;
   roles: number;
   eventPlayers: number;
+  totalREcords: number;
 }

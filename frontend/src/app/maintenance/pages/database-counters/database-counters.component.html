@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col">
             <div class="card text-white border-primary">
-                <div class="card-header bg-primary">Enregistrements par tables</div>
+                <div class="card-header bg-primary">Enregistrements par table</div>
                 <div class="card-body">
                     <div class="card-text">
                         <table class="table table-bordered table-stripped" *ngIf="counters$ | async as c">
@@ -54,6 +54,13 @@
                             <tr>
                               <td>Joueur-Parties</td>
                               <td>{{ c.eventPlayers }}</td>
+                            </tr>
+                            <tr>
+                              <td [attr.colspan]="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><b>Total</b></td>
+                              <td>{{ c. totalRecords }}</td>
                             </tr>
                         </table>
                     </div>
