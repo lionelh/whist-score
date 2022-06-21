@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Statistiques du contenu de la base dedonnées</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card text-white border-primary">
+                <div class="card-header bg-primary">Enregistrements par tables</div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <table class="table table-bordered table-stripped" *ngIf="counters$ | async as c">
+                            <tr class="bg-primary text-white">
+                                <th>Nom de la table</th>
+                                <th>Nombre d'enregistrement(s)</th>
+                            </tr>
+                            <tr>
+                              <td>Contrats</td>
+                              <td>{{ c.contracts }}</td>
+                            </tr>
+                            <tr>
+                              <td>Contracts-Rôles</td>
+                              <td>{{ c.contractRoles }}</td>
+                            </tr>
+                            <tr>
+                              <td>Donnes</td>
+                              <td>{{ c.draws }}</td>
+                            </tr>
+                            <tr>
+                              <td>Parties</td>
+                              <td>{{ c.events }}</td>
+                            </tr>
+                            <tr>
+                              <td>Joueurs</td>
+                              <td>{{ c.players }}</td>
+                            </tr>
+                            <tr>
+                              <td>Joueurs-Donnes</td>
+                              <td>{{ c.playerDraws }}</td>
+                            </tr>
+                            <tr>
+                              <td>Résultats</td>
+                              <td>{{ c.results }}</td>
+                            </tr>
+                            <tr>
+                              <td>Résultats-Rôles</td>
+                              <td>{{ c.resultRoles }}</td>
+                            </tr>
+                            <tr>
+                              <td>Rôles</td>
+                              <td>{{ c.roles }}</td>
+                            </tr>
+                            <tr>
+                              <td>Joueur-Parties</td>
+                              <td>{{ c.eventPlayers }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

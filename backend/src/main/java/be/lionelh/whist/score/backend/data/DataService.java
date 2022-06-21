@@ -4,10 +4,7 @@ import be.lionelh.whist.score.backend.data.dao.*;
 import be.lionelh.whist.score.backend.data.domain.*;
 import be.lionelh.whist.score.backend.data.domain.pk.PlayerDrawPK;
 import be.lionelh.whist.score.backend.data.domain.pk.ResultRolePK;
-import be.lionelh.whist.score.backend.rest.vo.DrawVO;
-import be.lionelh.whist.score.backend.rest.vo.PlayerDrawVO;
-import be.lionelh.whist.score.backend.rest.vo.ResultVO;
-import be.lionelh.whist.score.backend.rest.vo.RoleScoreVO;
+import be.lionelh.whist.score.backend.rest.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -299,5 +296,35 @@ public class DataService {
         e.setStatus(EventStatus.FINISHED);
         this.eventDao.saveAndFlush(e);
         return this.getEventDetails(inEventId);
+    }
+
+    public DatabaseCounter getDatabaseCounters() {
+        DatabaseCounter dc = new DatabaseCounter();
+        dc.setContracts(this.contractDao.count());
+        dc.setPlayers(this.playerDao.count());
+        dc.setDraws(this.drawDao.count());
+        dc.setRoles(this.roleDao.count());
+        dc.setEvents(this.eventDao.count());
+        dc.setPlayerDraws(this.playerDrawDao.count());
+        dc.setResultRoles(this.resultRoleDao.count());
+        dc.setResults(this.resultDao.count());
+
+        // Compute players-event records
+        List<Event> le = this.eventDao.findAll();
+        long playerEvents = 0;
+        for (Event e: le) {
+            playerEvents += e.getPlayers().size();
+        }
+        dc.setEventPlayers(playerEvents);
+
+        // Compute contract-role records
+        List<Contract> lc = this.contractDao.findAll();
+        long contractRoles = 0;
+        for(Contract c: lc) {
+            contractRoles += c.getRoles().size();
+        }
+        dc.setContractRoles(contractRoles);
+
+        return dc;
     }
 }

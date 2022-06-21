@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'contracts', loadChildren: () => import('./contract/contract.module').then(m => m.ContractModule) },
   { path: 'results', loadChildren: () => import('./result/result.module').then(m => m.ResultModule) },
   { path: 'games', loadChildren: () => import('./game/game.module').then(m => m.GameModule) },
+  { path: 'maintenance', loadChildren: () => import('./maintenance/maintenance.module').then(m => m.MaintenanceModule) },
   { path: '**', component: HomeComponent },
 ];
 

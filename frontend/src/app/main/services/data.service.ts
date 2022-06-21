@@ -7,6 +7,7 @@ import { Contract } from '../data/contract';
 import { ResultVO } from '../data/resultVO';
 import { Game } from '../data/game';
 import { DrawVO } from '../data/drawVO';
+import {DatabaseCounter} from "../data/database-counter";
 
 @Injectable({
   providedIn: 'root'
@@ -107,5 +108,10 @@ export class DataService {
     closeEvent(inId: number|undefined): Observable<DrawVO[]> {
       let apiURL: string = '/api/events/' + inId + '/close';
       return this._http.post<DrawVO[]>(apiURL, {});
+    }
+
+    retrieveDatabaseCounters(): Observable<DatabaseCounter> {
+      let apiURL: string = '/api/db/counters';
+      return this._http.get<DatabaseCounter>(apiURL);
     }
 }

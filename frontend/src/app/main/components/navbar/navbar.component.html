@@ -11,7 +11,7 @@
               <a class="dropdown-item" [routerLink]="['contracts']" [class.active]="currentPage == 'contracts'">Gestion des annonces</a>
               <a class="dropdown-item" [routerLink]="['results']" [class.active]="currentPage == 'results'">Gestion des score des annonces</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item disabled" href="#">Maintenance de la base de données</a>
+              <a class="dropdown-item" [routerLink]="['maintenance']" [class.active]="currentPage == 'maintenance'">Maintenance de la base de données</a>
             </div>
           </li>
         </ul>
