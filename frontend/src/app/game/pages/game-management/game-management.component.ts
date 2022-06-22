@@ -90,7 +90,7 @@ import { DataService } from "src/app/main/services/data.service";
             d.players = [];
             this.event?.players?.forEach(p =>{
                 const pdVO: PlayerDrawVO = { playerName: p.name, roleName: this.creationForm.get(p.name)?.value, eventScore: 0, drawScore: 0 };
-                if (pdVO.roleName === 'Mort' || (this.event.players?.length == 4 && p.name == this.dealer.value)) {
+                if (pdVO.roleName === 'Mort' || (this.event.players?.length == 4 && p.name == this.dealer?.value)) {
                   pdVO.dealer = true;
                 } else {
                   pdVO.dealer = false;
