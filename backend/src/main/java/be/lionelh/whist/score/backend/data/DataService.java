@@ -227,6 +227,7 @@ public class DataService {
                     pdVO.setEventScore(pd.getEventScore());
                     pdVO.setDrawScore(pd.getDrawScore());
                     pdVO.setRoleName(pd.getRole().getName());
+                    pdVO.setDealer(pd.isDealer());
                     lpdVO.add(pdVO);
                 });
                 dvo.setPlayers(lpdVO);
