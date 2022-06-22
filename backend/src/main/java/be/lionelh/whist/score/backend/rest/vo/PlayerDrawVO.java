@@ -9,6 +9,8 @@ public class PlayerDrawVO {
     private short eventScore;
     private String roleName;
 
+    private boolean dealer;
+
     public PlayerDrawVO() {}
 
     public String getPlayerName() {
@@ -41,5 +43,12 @@ public class PlayerDrawVO {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public boolean isDealer() {
+        return dealer;
+    }
+    public void setDealer(boolean dealer) {
+        this.dealer = dealer;
     }
 }

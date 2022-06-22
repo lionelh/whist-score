@@ -263,9 +263,11 @@ public class DataService {
         // Now update the score of all player participating
         for (Player p: lp) {
             Role playedRole = null;
+            boolean dealer = false;
             for(PlayerDrawVO pdVO: inDraw.getPlayers()) {
                 if (p.getName().equalsIgnoreCase(pdVO.getPlayerName())) {
                     playedRole = this.roleDao.findRoleByNameEqualsIgnoreCase(pdVO.getRoleName()).orElseThrow();
+                    dealer = pdVO.isDealer();
                 }
             }
             // Find score for result & role
@@ -274,12 +276,14 @@ public class DataService {
             if (lastDrawId == -1L) {
                 // First draw of the event
                 PlayerDraw playerDraw = new PlayerDraw(p, d, score, score, playedRole);
+                playerDraw.setDealer(dealer);
                 this.playerDrawDao.save(playerDraw);
             } else {
                 // An old draw have been already played => find the previous scores.
                 PlayerDraw lastPlayerDraw = this.playerDrawDao.findById(new PlayerDrawPK(p.getId(), lastDrawId)).orElseThrow();
                 short newEventScore = (short) (lastPlayerDraw.getEventScore() + score);
                 PlayerDraw playerDraw = new PlayerDraw(p, d, score, newEventScore, playedRole);
+                playerDraw.setDealer(dealer);
                 this.playerDrawDao.save(playerDraw);
             }
         };

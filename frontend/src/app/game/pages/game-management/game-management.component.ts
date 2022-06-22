@@ -34,8 +34,8 @@ import { DataService } from "src/app/main/services/data.service";
         this.event = {};
         this.creationForm = this._fb.group({
             contract: [ '', [ Validators.required ], [ ], { updateOn: "blur" } ],
-            result: [ '', [ Validators.required ], [ ], { updateOn: "blur" } ]
-            //players: this._fb.array([], [ Validators.required ])
+            result: [ '', [ Validators.required ], [ ], { updateOn: "blur" } ],
+            dealer: [ '', [ ], [ ], { updateOn: "blur" } ]
         });
     }
 
@@ -60,6 +60,7 @@ import { DataService } from "src/app/main/services/data.service";
 
     get contract() { return this.creationForm.get('contract'); }
     get result() { return this.creationForm.get('result'); }
+    get dealer() { return this.creationForm.get('dealer'); }
 
     ngOnDestroy() {
         this.sub.unsubscribe();
@@ -89,6 +90,11 @@ import { DataService } from "src/app/main/services/data.service";
             d.players = [];
             this.event?.players?.forEach(p =>{
                 const pdVO: PlayerDrawVO = { playerName: p.name, roleName: this.creationForm.get(p.name)?.value, eventScore: 0, drawScore: 0 };
+                if (pdVO.roleName === 'Mort' || (this.event.players?.length == 4 && p.name == this.dealer.value)) {
+                  pdVO.dealer = true;
+                } else {
+                  pdVO.dealer = false;
+                }
                 d.players?.push(pdVO);
             });
             this._dataService.createDraw(this.event.id, d).subscribe(

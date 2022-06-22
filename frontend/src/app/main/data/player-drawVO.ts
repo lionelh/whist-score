@@ -4,4 +4,5 @@ export interface PlayerDrawVO {
     drawScore: number;
     eventScore: number;
     roleName: string;
+    dealer?: boolean;
 }

@@ -44,6 +44,9 @@ public class PlayerDraw implements Serializable, Persistable {
     @Column(name = "PLD_LAST_UPDATE_DATE", nullable = false)
     private LocalDateTime lastUpdateDate;
 
+    @Column(name = "PLD_DEALER", scale = 1, precision = 0, nullable = false)
+    private int intDealer;
+
     public PlayerDraw() {
         super();
     }
@@ -121,6 +124,18 @@ public class PlayerDraw implements Serializable, Persistable {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public boolean isDealer() {
+        return (this.intDealer == 1);
+    }
+
+    public void setDealer(boolean dealer) {
+        if (dealer) {
+            this.intDealer = 1;
+        } else {
+            this.intDealer = 0;
+        }
     }
 
     @Override

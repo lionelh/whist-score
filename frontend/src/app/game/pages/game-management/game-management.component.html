@@ -43,6 +43,9 @@
                                     <span *ngIf="pd.roleName != 'Mort' && pd.drawScore > 0" [class.role-annonceur]="pd.roleName.toLowerCase().startsWith('annonceur')">(+{{ pd.drawScore }})</span>
                                     <span *ngIf="pd.roleName != 'Mort' && pd.drawScore &lt;= 0" [class.role-annonceur]="pd.roleName.toLowerCase().startsWith('annonceur')">({{ pd.drawScore }})</span>
                                     <span *ngIf="pd.roleName == 'Mort'">(-)</span>
+                                    <span *ngIf="pd.dealer">
+                                      <b>***</b>
+                                    </span>
                                 </td>
                             </tr>
                         </table>
@@ -56,6 +59,18 @@
                 <div class="card-body">
                     <div class="card-text">
                         <form [formGroup]="creationForm" (ngSubmit)="onSubmit()">
+                            <div class="for-group"
+                                 *ngIf="event?.players?.length == 4"
+                                 [class.has-danger]="dealer?.invalid && (dealer?.dirty || dealer?.touched)">
+                              <label for="dealer" class="control-label">Nom du donneur</label>
+                              <select class="form-select"
+                                      id="dealer"
+                                      formControlName="dealer"
+                                      [class.is-invalid]="dealer?.invalid && (dealer?.dirty || dealer?.touched)"
+                                      [class.is-valid]="dealer?.valid && (dealer?.dirty || dealer?.touched)">
+                                <option *ngFor="let p of event.players" value="{{ p.name }}">{{ p.name }}</option>
+                              </select>
+                            </div>
                             <div class="form-group required" [class.has-danger]="contract?.invalid && (contract?.dirty || contract?.touched)">
                                 <label for="contract" class="control-label">Nom de l'annonce de la donne</label>
                                 <select class="form-select"
