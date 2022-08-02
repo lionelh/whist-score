@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col">
             <h1>
-                Partie n°{{ id }} du {{ event?.eventDate| date: 'dd MMMM YYYY' }}
+                Partie du {{ event?.eventDate| date: 'dd MMMM YYYY' }}
                 <span *ngIf="event?.status == 'NEW'" class="badge rounded-pill bg-danger">Nouvelle</span>
                 <span *ngIf="event?.status == 'IN_PROGRESS'" class="badge rounded-pill bg-warning">En cours</span>
                 <span *ngIf="event?.status == 'FINISHED'" class="badge rounded-pill bg-success">Terminée</span>
