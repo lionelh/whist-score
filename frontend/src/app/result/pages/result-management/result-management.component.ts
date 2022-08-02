@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Contract } from 'src/app/main/data/contract';
 import { ResultVO } from 'src/app/main/data/resultVO';
@@ -15,11 +15,11 @@ import { NavigationNotifierService } from 'src/app/main/services/navigation-noti
 export class ResultManagementComponent {
   results$: Observable<ResultVO[]>|undefined;
   contracts: Contract[];
-  creationForm: FormGroup;
+  creationForm: UntypedFormGroup;
   roleScoresArray: string[];
   oldContractValue: number = -1;
 
-  constructor(private _navigationNotifierService: NavigationNotifierService, private _dataService: DataService, private _fb: FormBuilder) {
+  constructor(private _navigationNotifierService: NavigationNotifierService, private _dataService: DataService, private _fb: UntypedFormBuilder) {
     this.contracts = [];
     this.roleScoresArray = [];
     this.creationForm = this._fb.group({
@@ -88,7 +88,7 @@ export class ResultManagementComponent {
     this.contracts.forEach(ctr => {
       if (contractId ==  ctr.id) {
         ctr.roles?.forEach(role => {
-          this.creationForm.addControl(role.name, new FormControl('0'));
+          this.creationForm.addControl(role.name, new UntypedFormControl('0'));
           this.roleScoresArray.push(role.name);
         });
       }

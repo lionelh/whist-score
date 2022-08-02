@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { Observable, of } from "rxjs";
 import { Contract } from "src/app/main/data/contract";
@@ -20,14 +20,14 @@ import { DataService } from "src/app/main/services/data.service";
     private sub: any;
     event: Game;
     draws$: Observable<DrawVO[]>|undefined;
-    creationForm: FormGroup;
+    creationForm: UntypedFormGroup;
     contracts: Contract[]|undefined;
     oldContractValue: number = -1;
     playerRoleArray: string[];
     results: ResultVO[];
     roles: Role[];
 
-    constructor(private route: ActivatedRoute, private _dataService: DataService, private _fb: FormBuilder) {
+    constructor(private route: ActivatedRoute, private _dataService: DataService, private _fb: UntypedFormBuilder) {
         this.playerRoleArray = [];
         this.results = [];
         this.roles = [];
@@ -130,7 +130,7 @@ import { DataService } from "src/app/main/services/data.service";
                     if (contractId ==  ctr.id) {
                         this.roles = ctr.roles;
                         this.event?.players?.forEach(p => {
-                            this.creationForm.addControl(p.name, new FormControl(this.roles[0].id));
+                            this.creationForm.addControl(p.name, new UntypedFormControl(this.roles[0].id));
                             this.playerRoleArray.push(p.name);
                         });
                     }
