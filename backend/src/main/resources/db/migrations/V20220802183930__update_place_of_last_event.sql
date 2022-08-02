@@ -1,0 +1,1 @@
+UPDATE tnl_events SET evt_place='Fleureus (enregistrement des scores arrêté suite à petit bug)' WHERE evt_id=35;
