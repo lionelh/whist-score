@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Player } from 'src/app/main/data/player';
 import { DataService } from 'src/app/main/services/data.service';
@@ -13,9 +13,9 @@ import { UniquePlayerNameValidator } from '../../validators/unique-player-name.v
 })
 export class PlayerManagementComponent {
   players$: Observable<Player[]>|undefined;
-  creationForm: FormGroup;
+  creationForm: UntypedFormGroup;
 
-  constructor(private _navigationNotifierService: NavigationNotifierService, private _dataService: DataService, private _fb: FormBuilder, private _uniquePlayerNameValidator: UniquePlayerNameValidator) {
+  constructor(private _navigationNotifierService: NavigationNotifierService, private _dataService: DataService, private _fb: UntypedFormBuilder, private _uniquePlayerNameValidator: UniquePlayerNameValidator) {
     this.creationForm = this._fb.group({
       name: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(150) ], [ _uniquePlayerNameValidator ], { updateOn: "blur" } ],
     });

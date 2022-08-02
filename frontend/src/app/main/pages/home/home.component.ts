@@ -4,7 +4,7 @@ import { DataService } from '../../services/data.service';
 import { NavigationNotifierService } from '../../services/navigation-notification.service';
 import { Game } from '../../data/game';
 import { Player } from '../../data/player';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'wsw-home',
@@ -15,9 +15,9 @@ export class HomeComponent implements OnInit {
 
   events$: Observable<Game[]>|undefined;
   dbPlayers: Player[]|undefined;
-  creationForm: FormGroup;
+  creationForm: UntypedFormGroup;
 
-  constructor(private _navigationNotifierService: NavigationNotifierService, private _dataService: DataService, private _fb: FormBuilder) {
+  constructor(private _navigationNotifierService: NavigationNotifierService, private _dataService: DataService, private _fb: UntypedFormBuilder) {
     this.creationForm = this._fb.group({
       place: [ '', [ Validators.required, Validators.minLength(2), Validators.maxLength(150) ], [ ], { updateOn: "blur" } ],
       players: this._fb.array([], [ Validators.required ])
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     if (this.creationForm?.valid) {
       let e: Game = { place: this.creationForm.value['place'] };
       e.players = [];
-      const playersTab: FormArray = this.creationForm.get('players') as FormArray;
+      const playersTab: UntypedFormArray = this.creationForm.get('players') as UntypedFormArray;
       playersTab.controls.forEach((item) => {
         let roleId: number = item.value;
         let p: Player|undefined = this.findPlayerById(roleId);
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
         }
       );
       this.creationForm.reset();
-      (this.players as FormArray).clear();
+      (this.players as UntypedFormArray).clear();
     }
   }
 
@@ -72,9 +72,9 @@ export class HomeComponent implements OnInit {
 
   onPlayerCheckboxChange(e: Event) {
     let eventTarget: HTMLInputElement|null = e.target as HTMLInputElement;
-    const playersArray: FormArray = this.creationForm.get('players') as FormArray;
+    const playersArray: UntypedFormArray = this.creationForm.get('players') as UntypedFormArray;
     if (eventTarget.checked) {
-      playersArray.push(new FormControl(eventTarget.value));
+      playersArray.push(new UntypedFormControl(eventTarget.value));
     } else {
       let i: number = 0;
       playersArray.controls.forEach((item) => {

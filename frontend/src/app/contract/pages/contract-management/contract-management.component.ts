@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { Role } from 'src/app/main/data/role';
 import { Contract } from 'src/app/main/data/contract';
@@ -15,9 +15,9 @@ import { UniqueContractByNameAndNumberOfPlayersValidator } from '../../validator
 export class ContractManagementComponent {
   contracts$: Observable<Contract[]>|undefined;
   rolesArray: Role[]|undefined;
-  creationForm: FormGroup;
+  creationForm: UntypedFormGroup;
 
-  constructor(private _navigationNotifierService: NavigationNotifierService, private _dataService: DataService, private _fb: FormBuilder, private _uniqueContract: UniqueContractByNameAndNumberOfPlayersValidator) {
+  constructor(private _navigationNotifierService: NavigationNotifierService, private _dataService: DataService, private _fb: UntypedFormBuilder, private _uniqueContract: UniqueContractByNameAndNumberOfPlayersValidator) {
     this.creationForm = this._fb.group({
       name: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(150) ], [ ] ],
       numberOfPlayers: ['4', [Validators.required]],
@@ -51,7 +51,7 @@ export class ContractManagementComponent {
   onSubmit(): void {
     if (this.creationForm?.valid) {
       let c: Contract = { name: this.creationForm?.value['name'], numberOfPlayers: this.creationForm?.value['numberOfPlayers'], roles: [] };
-      const rolesTab: FormArray = this.creationForm.get('roles') as FormArray;
+      const rolesTab: UntypedFormArray = this.creationForm.get('roles') as UntypedFormArray;
       rolesTab.controls.forEach((item) => {
         let roleId: number = item.value;
         let r: Role|undefined = this.findRoleById(roleId);
@@ -66,16 +66,16 @@ export class ContractManagementComponent {
         }
       );
       this.creationForm.reset();
-      (this.roles as FormArray).clear();
+      (this.roles as UntypedFormArray).clear();
       this.creationForm.get('numberOfPlayers')?.setValue('4');
     }
   }
 
   onRoleCheckboxChange(e: Event) {
     let eventTarget: HTMLInputElement|null = e.target as HTMLInputElement;
-    const rolesArray: FormArray = this.creationForm.get('roles') as FormArray;
+    const rolesArray: UntypedFormArray = this.creationForm.get('roles') as UntypedFormArray;
     if (eventTarget.checked) {
-      rolesArray.push(new FormControl(eventTarget.value));
+      rolesArray.push(new UntypedFormControl(eventTarget.value));
     } else {
       let i: number = 0;
       rolesArray.controls.forEach((item) => {
