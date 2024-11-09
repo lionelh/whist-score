@@ -335,7 +335,7 @@ INSERT INTO tbl_result_roles (rer_creation_date, rer_last_update_date, rer_res_i
 INSERT INTO tbl_result_roles (rer_creation_date, rer_last_update_date, rer_res_id, rer_rol_id, rer_score) VALUES (TIMESTAMP '2024-11-09 15:47:00', TIMESTAMP '2024-11-09 15:47:00', 387, 3, -16);
 INSERT INTO tbl_result_roles (rer_creation_date, rer_last_update_date, rer_res_id, rer_rol_id, rer_score) VALUES (TIMESTAMP '2024-11-09 15:47:00', TIMESTAMP '2024-11-09 15:47:00', 387, 4, 16);
 INSERT INTO tbl_result_roles (rer_creation_date, rer_last_update_date, rer_res_id, rer_rol_id, rer_score) VALUES (TIMESTAMP '2024-11-09 15:47:00', TIMESTAMP '2024-11-09 15:47:00', 387, 5, 16);
-INSERT INTO tbl_result_roles (rer_creation_date, rer_last_update_date, rer_res_id, rer_rol_id, rer_score) VALUES (TIMESTAMP '2024-11-09 15:47:00', TIMESTAMP '2024-11-09 15:47:00', 378, 8, 0);
+INSERT INTO tbl_result_roles (rer_creation_date, rer_last_update_date, rer_res_id, rer_rol_id, rer_score) VALUES (TIMESTAMP '2024-11-09 15:47:00', TIMESTAMP '2024-11-09 15:47:00', 387, 8, 0);
 
 -- Emballage 13 (5 joueurs)
 INSERT INTO tbl_result_roles (rer_creation_date, rer_last_update_date, rer_res_id, rer_rol_id, rer_score) VALUES (TIMESTAMP '2024-11-09 15:47:00', TIMESTAMP '2024-11-09 15:47:00', 379, 2, -6);
