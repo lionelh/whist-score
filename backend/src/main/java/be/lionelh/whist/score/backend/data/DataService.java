@@ -139,7 +139,7 @@ public class DataService {
      ***************************************
      */
     public List<ResultVO> findAllResultsSorted() {
-        List<Result> lr = this.resultDao.findAll(Sort.by(Sort.Order.asc("numberOfPlayers"), Sort.Order.asc("name")));
+        List<Result> lr = this.resultDao.findAll(Sort.by(Sort.Order.asc("numberOfPlayers"), Sort.Order.asc("contract.name"), Sort.Order.asc("name")));
         List<ResultVO> returnValue = new ArrayList<>();
         lr.forEach((r) -> {
             ResultVO rv = new ResultVO(r.getName(), r.getContract());
